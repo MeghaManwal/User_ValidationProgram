@@ -5,6 +5,7 @@ class User {
       private String firstname;
       private String lastname;
       private String emailId;
+      private String pNumb;
 
       public String getFirstName() {
         return firstname;
@@ -28,6 +29,14 @@ class User {
 
       public void setEmailId(String emailId) {
         this.emailId=emailId;
+      }
+
+       public String getPNumb() {
+        return pNumb;
+      }
+
+      public void setPNumb(String pNumb) {
+        this.pNumb=pNumb;
       }
 }
 
@@ -56,10 +65,20 @@ public class UserValidationProgram {
 
         String pattern3="^[A-Z a-z 0-9]+([._+-][0-9 a-z A-Z]+)*@[0-9 a-z A-Z]+.[a-z A-Z]{2,3}([.][a-z A-Z]{2})*$";
 
-        Pattern Q=Pattern.compile(pattern3);
-        Matcher n=Q.matcher(emailId);
-        return n.matches();
+        Pattern R=Pattern.compile(pattern3);
+        Matcher o=R.matcher(emailId);
+        return o.matches();
        }
+
+        public static boolean isValidPhoneNumb(String pNumb) {
+
+        String pattern4="^[+][0-9]{1,}\\s?[1-9]{1}[0-9]{9}$";
+
+        Pattern S=Pattern.compile(pattern4);
+        Matcher p=S.matcher(pNumb);
+        return p.matches();
+       }
+
 
       public static void main(String[] args) {
         User s=new User();
@@ -74,12 +93,18 @@ public class UserValidationProgram {
         System.out.println("Enter the EmailId: ");
         String Id=sc.nextLine();
 
+        System.out.println("Enter the PhoneNumber: ");
+        String numb=sc.nextLine();
+
+
         s.setFirstName(name);
         s.setLastName(lname);
         s.setEmailId(Id);
+        s.setPNumb(numb);
 
         System.out.println(s.getFirstName()+":"+isValidIname(s.getFirstName()));
         System.out.println(s.getLastName()+":"+isValidIIname(s.getLastName()));
-        System.out.println(s.getEmailId()+":"+isValidEmailID(s.getEmailId())); 
+        System.out.println(s.getEmailId()+":"+isValidEmailID(s.getEmailId()));
+        System.out.println(s.getPNumb()+":"+isValidPhoneNumb(s.getPNumb()));
       }
 }

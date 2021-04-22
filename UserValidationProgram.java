@@ -6,6 +6,7 @@ class User {
       private String lastname;
       private String emailId;
       private String pNumb;
+      private String password;
 
       public String getFirstName() {
         return firstname;
@@ -37,6 +38,13 @@ class User {
 
       public void setPNumb(String pNumb) {
         this.pNumb=pNumb;
+      }
+       public String getPassword() {
+        return password;
+      }
+
+      public void setPassword(String password) {
+        this.password=password;
       }
 }
 
@@ -70,13 +78,23 @@ public class UserValidationProgram {
         return o.matches();
        }
 
-        public static boolean isValidPhoneNumb(String pNumb) {
+
+       public static boolean isValidPhoneNumb(String pNumb) {
 
         String pattern4="^[+][0-9]{1,}\\s?[1-9]{1}[0-9]{9}$";
 
         Pattern S=Pattern.compile(pattern4);
         Matcher p=S.matcher(pNumb);
         return p.matches();
+       }
+
+       public static boolean isValidPassworD(String password) {
+
+        String pattern5="(.{8,}$)";
+
+        Pattern T=Pattern.compile(pattern5);
+        Matcher q=T.matcher(password);
+        return q.matches();
        }
 
 
@@ -96,15 +114,20 @@ public class UserValidationProgram {
         System.out.println("Enter the PhoneNumber: ");
         String numb=sc.nextLine();
 
+        System.out.println("Enter the Password: ");
+        String pword=sc.nextLine();
+
 
         s.setFirstName(name);
         s.setLastName(lname);
         s.setEmailId(Id);
         s.setPNumb(numb);
+        s.setPassword(pword);
 
         System.out.println(s.getFirstName()+":"+isValidIname(s.getFirstName()));
         System.out.println(s.getLastName()+":"+isValidIIname(s.getLastName()));
         System.out.println(s.getEmailId()+":"+isValidEmailID(s.getEmailId()));
         System.out.println(s.getPNumb()+":"+isValidPhoneNumb(s.getPNumb()));
+        System.out.println(s.getPassword()+":"+isValidPassworD(s.getPassword()));
       }
 }

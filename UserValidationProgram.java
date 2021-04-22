@@ -90,7 +90,7 @@ public class UserValidationProgram {
 
        public static boolean isValidPassworD(String password) {
 
-        String pattern5="^(?=[0-9 A-Z a-z !@#$%^&*();:]{8,}$)(?=.*?[A-Z]{1,}).*$";
+        String pattern5="^(?=[0-9 A-Z a-z !@#$%^&*();:]{8,}$)(?=.*?[A-Z]{1,})(?=.*?[0-9]{1,}).*$";
 
         Pattern T=Pattern.compile(pattern5);
         Matcher q=T.matcher(password);
